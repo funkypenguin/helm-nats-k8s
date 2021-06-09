@@ -1,0 +1,24 @@
+---
+# Source: nats/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-nats-config
+  labels:
+    helm.sh/chart: nats-0.8.0
+    app.kubernetes.io/name: nats
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "2.2.3"
+    app.kubernetes.io/managed-by: Helm
+data:
+  nats.conf: |
+    # PID file shared with configuration reloader.
+    pid_file: "/var/run/nats/nats.pid"
+
+    ###############
+    #             #
+    # Monitoring  #
+    #             #
+    ###############
+    http: 8222
+    server_name: $POD_NAME

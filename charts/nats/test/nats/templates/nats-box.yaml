@@ -1,0 +1,35 @@
+---
+# Source: nats/templates/nats-box.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-nats-box
+  labels:
+    app: RELEASE-NAME-nats-box
+    chart: nats-0.8.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: RELEASE-NAME-nats-box
+  template:
+    metadata:
+      labels:
+        app: RELEASE-NAME-nats-box
+    spec:
+      volumes:
+
+      containers:
+      - name: nats-box
+        image: natsio/nats-box:0.6.0
+        imagePullPolicy: IfNotPresent
+        resources:
+          null
+        env:
+        - name: NATS_URL
+          value: RELEASE-NAME-nats
+        command:
+         - "tail"
+         - "-f"
+         - "/dev/null"
+        volumeMounts:
