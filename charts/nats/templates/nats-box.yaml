@@ -33,7 +33,7 @@ spec:
         secret:
           secretName: {{ $secretName }}
       {{- end }}
-
+      serviceAccountName: {{ .Values.nats.serviceAccount }}
       containers:
       - name: nats-box
         image: {{ .Values.natsbox.image }}
