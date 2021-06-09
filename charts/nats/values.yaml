@@ -18,7 +18,9 @@ nats:
 
   # In case both external access and advertise are enabled
   # then a service account would be required to be able to
-  # gather the public ip from a node.
+  # gather the public ip from a node. Additionally, a service
+  # account is typically required in order to apply policy for
+  # features such as running pods as root, or using shared process namespace
   serviceAccount: "nats-server"
 
   # The number of connect attempts against discovered routes.
