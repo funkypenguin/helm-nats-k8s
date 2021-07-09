@@ -398,6 +398,7 @@ spec:
         - -subz
         - -varz
         - -prefix=nats
+        - -jsz=all
         - -use_internal_server_id
         - http://localhost:8222/
         ports:
