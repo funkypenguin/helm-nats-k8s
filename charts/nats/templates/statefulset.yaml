@@ -36,7 +36,9 @@ spec:
       {{- end }}
       labels:
         {{- include "nats.selectorLabels" . | nindent 8 }}
-        {{- include "nats.podLabels" . | nindent 8 }}
+        {{- range $key, $value := .Values.nats.podLabels }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
     spec:
 {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
