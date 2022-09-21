@@ -120,6 +120,10 @@ securityContext: {}
 #   runAsUser: 1000
 #   runAsNonRoot: true
 
+# Toggle whether to use setup a Container Security Context
+# ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+containerSecurityContext: {}
+
 # Affinity for pod assignment
 # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 affinity: {}

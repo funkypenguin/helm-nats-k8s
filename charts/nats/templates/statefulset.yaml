@@ -360,6 +360,9 @@ spec:
               - "-c"
               - "nats-server -sl=ldm=/var/run/nats/nats.pid && /bin/sleep {{ .Values.nats.terminationGracePeriodSeconds }}"
 
+        {{- with .Values.containerSecurityContext }}
+        securityContext:
+        {{ toYaml . | indent 8 }}
       #################################
       #                               #
       #  NATS Configuration Reloader  #
@@ -382,6 +385,9 @@ spec:
             mountPath: /etc/nats-config
           - name: pid
             mountPath: /var/run/nats
+        {{- with .Values.containerSecurityContext }}
+        securityContext:
+        {{ toYaml . | indent 8 }}            
       {{ end }}
 
       ##############################
@@ -407,6 +413,9 @@ spec:
         ports:
         - containerPort: 7777
           name: metrics
+        {{- with .Values.containerSecurityContext }}
+        securityContext:
+        {{ toYaml . | indent 8 }}          
       {{ end }}
 
   volumeClaimTemplates:
