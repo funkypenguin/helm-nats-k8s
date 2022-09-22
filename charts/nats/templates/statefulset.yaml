@@ -362,7 +362,7 @@ spec:
 
         {{- with .Values.containerSecurityContext }}
         securityContext:
-        {{ toYaml . | indent 8 }}
+        {{- toYaml . | nindent 10 }}
       #################################
       #                               #
       #  NATS Configuration Reloader  #
@@ -387,7 +387,7 @@ spec:
             mountPath: /var/run/nats
         {{- with .Values.containerSecurityContext }}
         securityContext:
-        {{ toYaml . | indent 8 }}            
+        {{- toYaml . | nindent 10 }}            
       {{ end }}
 
       ##############################
@@ -415,7 +415,7 @@ spec:
           name: metrics
         {{- with .Values.containerSecurityContext }}
         securityContext:
-        {{ toYaml . | indent 8 }}          
+        {{- toYaml . | nindent 10 }}          
       {{ end }}
 
   volumeClaimTemplates:
